@@ -38,12 +38,14 @@
         @foreach($post as $row)
         <tr>
           <td>{{$loop->iteration }}</td>
-          <td><img src="/upload/post/{{$row->sampul}}" alt="" width="80px" height="80px" ></td>
+          <td><img src="/upload/post/{{$row->sampul}}" alt="" width="80px" height="80px"></td>
           <td>{{$row->judul}}</td>
           <td>{{$row->slug}}</td>
-          <td>
+          <td width="25%">
             <div class="btn-group" role="group" aria-label="Basic examplse">
+              <a href="/post/{{$row->id}} " type="button" class="btn btn-info btn-sm mx-1"><i class="fa fa-eye"></i> Detail</a>
               <a href="/post/{{$row->id}}/edit " type="button" class="btn btn-primary btn-sm mx-1"><i class="fa fa-edit"></i> Edit</a>
+
               <form action="/post/{{ $row->id }}" method="post">
                 @method('DELETE')
                 @csrf
@@ -59,9 +61,9 @@
     {{ $post->links() }}
 
     @else
-        <div class="alert alert-info" role="alert">
-          Anda belum mempunyai data
-      </div>
+    <div class="alert alert-info" role="alert">
+      Anda belum mempunyai data
+    </div>
     @endif
 
 
